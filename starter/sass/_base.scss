@@ -33,3 +33,36 @@ body{
     font-weight: 300;
     line-height: 1.6;
 }
+
+.container{
+    display: grid;
+    //min-content auto adapts to the content when you increase or decrease the size of the window
+    //min-content is auto by default
+    //as we decrease the viewport width (viewport width) - the size of the box decreases...
+    //so we set the row to be sized as a member of the viewport width
+    //viewport height and vw are very important real world scenarios 
+    //min-content - is row height to be same height as the content - same thing for footer
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+
+    //it is common in web design to use 8 to 12 or 16 predesigned columns 
+    //bootstrap has a 12-column grid
+    //start with 8 column grid and add step by step
+    //1100-1200 pixels change to rem
+    //1140/8 pixels = 140 pixels = 14rem
+    //8 rem for side bar
+    //14rem for other content
+
+    //in order to center all of the columns we care about, we will add 2 more columns from the end of the sidebar to the right hand screen 
+    //if we didnt have sidebar- we could use margin: 0 auto trick or justify as well
+    
+    //we only care about naming columns in a big layout like this and not naming rows. 
+    //for the rows, we only care about the content fitting in the columns - columns are more important
+    //minmax(6rem,1fr) is to add a margin border between homes and side bar and the right hand side
+    //as you decrease the size to hit 6rem, then the other columns decrease
+    grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content,14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+
+    & > * {
+        padding: 40px;
+        font-size: 3rem;
+    }
+}
