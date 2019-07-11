@@ -1,4 +1,42 @@
 .features{
-    background-color: $color-grey-light-2;
+    //so you have the main html grid
+    //then you have the grid within the section - which is this
+
     grid-column: center-start / center-end;
+
+    margin: 15rem 0; //around the content
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); 
+    //auto-fit will make each content fit a row when you shrink the box down
+    //grid-template-rows: auto auto; don't need to add this because the rows are going to be implicit grid
+    //the content is going to overflow from the end of the column and end at the next 
+    grid-gap: 6rem;
+
+    align-items: start;//bc align-items are automaticaly strech will give more space for content with less space 
+    //align alignes the content within a grid up or down
+}
+
+.feature{
+    //then you have this grid to deal with the card features 
+
+    display: grid;
+    grid-template-columns: min-content 1fr; //min-content just fix the content within there
+    //instead of adding margin
+    grid-row-gap: 1.5rem; //this adds space between the column and rows which gives some space between content elemtns
+    grid-column-gap: 2.5rem;
+    
+
+    &__icon{
+        fill: $color-primary;
+        width: 4.5rem;
+        height: 4.5rem;
+        grid-row: 1 / span 2; //to take all the space on the first row
+        transform: translateY(-1rem); //to move the icon down 
+        
+    }
+
+    &__text{
+        font-size: 1.7rem;
+    }
 }
